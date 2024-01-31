@@ -13,3 +13,14 @@
 # Input: s = "erase*****"
 # Output: ""
 # Explanation: The entire string is removed, so we return an empty string.
+
+
+class Solution:
+    def removeStars(self, s: str) -> str:
+        ans=[]      #Empty stack
+        for i in s:
+            if i=='*':
+                ans.pop()
+            else:
+                ans+=i
+        return "".join(ans)     #Type conversion
