@@ -10,7 +10,6 @@ from typing import List
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
         maxCandies=max(candies)
-        ans=[]
-        for i in range(len(candies)):
-            ans = [1 if (candies[i]+extraCandies) >= maxCandies else 0 for i in range(len(candies))]
+        ans = [candy + extraCandies >= maxCandies for candy in candies]     # Method1
+        # ans = [1 if candy + extraCandies >= maxCandies else 0 for candy in candies]       # Method2
         return ans
