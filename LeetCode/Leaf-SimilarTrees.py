@@ -16,7 +16,6 @@ class TreeNode:
 # RECURSIVE SOLUTION
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        
         def preorder(root, leaves):
             if not root.left and not root.right:
                 leaves.append(root.val)
