@@ -1,14 +1,9 @@
-# https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/?envType=study-plan-v2&envId=leetcode-75
+# https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/
 
 # Example 1:
 # Input: nums = [1,1,0,1]
 # Output: 3
 # Explanation: After deleting the number in position 2, [1,1,1] contains 3 numbers with value of 1's.
-
-# Example 2:
-# Input: nums = [0,1,1,1,0,1,1,0,1]
-# Output: 5
-# Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest subarray with value of 1's is [1,1,1,1,1].
 
 from typing import List
 class Solution:
