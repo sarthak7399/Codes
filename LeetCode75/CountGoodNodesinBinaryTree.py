@@ -9,10 +9,6 @@
 # Node 5 -> (3,4,5) is the maximum value in the path
 # Node 3 -> (3,1,3) is the maximum value in the path.
 
-# Example 4:
-# Input: root = [2,null,4,10,8,null,null,4]
-# Output: 4
-
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
