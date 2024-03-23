@@ -4,6 +4,7 @@
 # Input: head = [1,2,2,1]
 # Output: true
 
+from typing import Optional
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
