@@ -6,6 +6,7 @@
 # Output: 2
 # Explanation: [0, 1] is the longest contiguous subarray with an equal number of 0 and 1.
 
+from typing import List
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         count = 0  # Initialize a counter to keep track of the running sum of 0s and 1s encountered
