@@ -32,14 +32,14 @@ class Solution:
             # Iterate through the array
             for i in range(n):
                 # Find the number of elements satisfying the condition
-                while j < n and arr[i] >= arr[j] * mid:
+                while j < n and arr[i] >= arr[j] * mid: # This condition means number chosen is less than the denominator and greater than the fraction 
                     j += 1
                 
                 # Update the total count
                 total += n - j
 
                 # Update the maximum fraction if applicable
-                if j < n and max_fraction < arr[i] * 1.0 / arr[j]:
+                if j < n and max_fraction < arr[i] * 1.0 / arr[j]:  # This condition means number chosen is less than the denominator and greater than the fraction
                     max_fraction = arr[i] * 1.0 / arr[j]
                     numerator, denominator = i, j
 
