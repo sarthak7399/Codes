@@ -22,6 +22,8 @@ class Solution:
             
             if max_element in temp and temp[max_element] >= k:  # Check if max_element occurs at least k times
                 count += len(nums) - right  # Increment count by the length of the current subarray
+            # When we encounter a subarray where the maximum element appears at least k times, it's not just about that single subarray.
+            # It implies that all subarrays starting from the current position up to the end of the array (right) satisfy the condition.
             
             # Slide the window to the right while maintaining the condition
             while left <= right and max_element in temp and temp[max_element] >= k:
