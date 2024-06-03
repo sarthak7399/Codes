@@ -9,12 +9,31 @@
 
 class Solution:
     def numberOfConsecutiveOnes (ob,n):
-        # code here 
-        MOD=1000000007
-        dp=[0]*100001
-        dp[2]=1
-        dp[3]=3
-        for i in range(3,100001):
-            dp[i]=(dp[i-1]+dp[i-2]+(pow(2,i-2,MOD)))%MOD
-            
-        return dp[n]
+        MOD = 1000000007
+
+        # Edge case
+        if n == 0:
+            return 0
+
+        # Total number of binary strings of length n
+        total_binary_strings = pow(2, n, MOD)
+
+        # DP array to store the number of valid strings without consecutive 1's
+        if n == 1:
+            return 0  # As there are no consecutive 1s in a single bit
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1  # There's 1 way to arrange a string of length 0 (empty string)
+        dp[1] = 2  # "0" and "1"
+
+        for i in range(2, n + 1):
+            dp[i] = (dp[i-1] + dp[i-2]) % MOD
+
+        # Number of binary strings with at least one consecutive 1
+        result = (total_binary_strings - dp[n]) % MOD
+        
+        # In case the result is negative
+        if result < 0:
+            result += MOD
+        
+        return result
