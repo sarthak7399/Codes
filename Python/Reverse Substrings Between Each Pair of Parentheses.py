@@ -1,0 +1,23 @@
+# https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+
+# Example 2:
+# Input: s = "(u(love)i)"
+# Output: "iloveu"
+# Explanation: The substring "love" is reversed first, then the whole string is reversed.
+
+from collections import deque
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        ind_stack: deque[int] = deque()
+        res: list[str] = []
+
+        for char in s:
+            if char == "(":  # start new string we need to reverse first
+                ind_stack.append(len(res))  # string starts on next index
+            elif char == ")":  # reverse string from last added start index
+                start_ind: int = ind_stack.pop()
+                res[start_ind:] = res[start_ind:][::-1]
+            else:
+                res.append(char)
+
+        return "".join(res)
