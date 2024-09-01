@@ -7,7 +7,7 @@
 from typing import List
 class Solution:
     def regionsBySlashes(self, grid: List[str]) -> int:
-        def dfs(i: int, j: int) -> int:
+        def dfs(i: int, j: int) -> int:            
             if min(i, j) < 0 or max(i, j) >= len(g) or g[i][j] != 0:
                 return 0
             g[i][j] = 1
