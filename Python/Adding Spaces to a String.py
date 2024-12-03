@@ -10,28 +10,22 @@
 from typing import List
 class Solution:
     def addSpaces(self, s: str, spaces: List[int]) -> str:
-        # Initialize two pointers: 'i' for the string 's' and 'j' for the 'spaces' list.
-        i, j = 0, 0
-        # Create an empty list to build the result string efficiently.
-        res = []
+        # Initialize the starting index for slicing the string
+        index = 0
+        # Create an empty list to store parts of the string
+        result = []
 
-        # Traverse through the string 's' and 'spaces' simultaneously.
-        while i < len(s) and j < len(spaces):
-            # If the current index in 's' is before the next space position,
-            # append the character to the result list.
-            if i < spaces[j]:
-                res.append(s[i])
-                i += 1
-            else:
-                # If the current index matches the next space position,
-                # append a space to the result and move to the next space index.
-                res.append(" ")
-                j += 1
+        # Iterate through each space position in the 'spaces' list
+        for space in spaces:
+            # Slice the string from the current index up to the current space position
+            # and append it to the result list
+            result.append(s[index : space])
+            # Update the starting index to the current space position
+            index = space
 
-        # If there are remaining characters in 's' after processing all spaces,
-        # append them to the result.
-        if i < len(s):
-            res.append(s[i:])  # Use slicing to add all remaining characters.
+        # After processing all the spaces, append the remaining part of the string
+        # from the last space position to the end of the string
+        result.append(s[index :])
         
-        # Combine the list elements into a single string and return it.
-        return "".join(res)
+        # Join the parts in the result list with a space between them and return
+        return " ".join(result)
