@@ -11,7 +11,7 @@
 # "aba" -> index 1 ("caca"), index 2 ("bbbb"), index 3 ("acca")
 # "aba" -> index 1 ("caca"), index 2 ("bbbb"), index 3 ("caca")
 
-from typing import List
+from typing import List 
 class Solution:
     def numWays(self, words: List[str], target: str) -> int:
         MOD = 10**9 + 7
