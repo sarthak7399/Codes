@@ -40,5 +40,4 @@ class Solution:
 #                 j=len(nums)-1
 #             else:
 #                 j-=1
-
 #         return count
