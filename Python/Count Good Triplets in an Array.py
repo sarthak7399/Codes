@@ -27,7 +27,7 @@ class Solution:
         # BIT update operation: add 'val' at index 'i'
         def update(bit, i, val):
             i += 1  # BIT is 1-indexed
-            while i <= n:
+            while i <= n :
                 bit[i] += val
                 i += i & -i
 
