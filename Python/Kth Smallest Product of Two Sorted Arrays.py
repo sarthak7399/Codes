@@ -8,43 +8,45 @@
 # - nums1[0] * nums2[1] = 2 * 4 = 8
 # The 2nd smallest product is 8.
 
-from bisect import bisect_left, bisect_right
-from typing import List
+import bisect
 
 class Solution:
-    def kthSmallestProduct(self, n1: List[int], n2: List[int], k: int) -> int:
-        # Helper function to count how many products are <= x
-        def cnt(x):
-            c = 0
-            for a in n1:
-                if a > 0:
-                    # If a > 0, count how many b in n2 such that a * b <= x
-                    c += bisect_right(n2, x // a)
-                elif a < 0:
-                    # If a < 0, need to find how many b such that a * b <= x
-                    # Which becomes b >= ceil(x / a)
-                    t = x // a + (1 if x % a else 0)
-                    c += m2 - bisect_left(n2, t)
-                else:
-                    # a == 0: product is 0, which is <= x if x >= 0
-                    if x >= 0:
-                        c += m2
-            return c
+    # Helper function to count number of pairs (a[i], b[j]) such that a[i] * b[j] <= target
+    def count(self, a, b, target):
+        cnt = 0
+        for num in a:
+            if num == 0:
+                # 0 * any number is 0, which is <= target if target >= 0
+                if target >= 0:
+                    cnt += len(b)  # All b[j] satisfy the condition
 
-        # Ensure n1 is the smaller array to optimize performance
-        if len(n1) > len(n2):
-            n1, n2 = n2, n1
+            elif num > 0:
+                # For positive num, we need b[j] <= floor(target / num)
+                cnt += bisect.bisect_right(b, target // num)
 
-        m2 = len(n2)
-
-        # Determine the minimum and maximum possible products to bound binary search
-        lo = min(n1[0]*n2[0], n1[0]*n2[-1], n1[-1]*n2[0], n1[-1]*n2[-1])
-        hi = max(n1[0]*n2[0], n1[0]*n2[-1], n1[-1]*n2[0], n1[-1]*n2[-1])
-
-        # Binary search for the k-th smallest product
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if cnt(mid) >= k:
-                hi = mid  # Look for smaller product
             else:
-                lo = mid + 1  # Look for larger
+                # For negative num, we need b[j] >= ceil(target / num)
+                # because negative * smaller negative = larger positive
+                div = target // num
+                if target % num != 0:
+                    div += 1  # Apply ceiling manually
+                # Count of b[j] >= div is total - number of b[j] < div
+                cnt += len(b) - bisect.bisect_left(b, div)
+        return cnt
+
+    def kthSmallestProduct(self, a, b, k):
+        # Binary search for the k-th smallest product
+        # Range: possible min and max values of a[i] * b[j]
+        l, r = -10**10, 10**10
+        ans = 0
+        
+        # Binary search to find the smallest value such that
+        # there are at least k products <= that value
+        while l <= r:
+            mid = (l + r) // 2
+            if self.count(a, b, mid) >= k:
+                ans = mid       # Candidate answer
+                r = mid - 1     # Try to find a smaller valid product
+            else:
+                l = mid + 1     # Increase mid to find at least k products
+        return ans
