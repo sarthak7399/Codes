@@ -8,6 +8,8 @@
 # The longest subarray with that value is [3,3], so we return 2.
 
 from typing import List
+
+# Method 1 : Brute Force
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
         # Get the maximum value from the input array
@@ -29,3 +31,22 @@ class Solution:
                 current_count = 0
         
         return longest_count
+
+
+# # Method 2 : Optimized
+
+# from itertools import groupby  # Import groupby for grouping consecutive identical elements
+
+# class Solution:
+#     def longestSubarray(self, nums: List[int]) -> int:
+#         max_ = max(nums)  # Find the maximum value in the list
+
+#         # Group consecutive elements with same value using groupby.
+#         # For each group where the key (element value) == max_,
+#         # calculate the length of the group (i.e., how many times max_ appears consecutively).
+#         # Finally, return the largest such length.
+#         return max(
+#             len(list(values))        # Length of the current group of max_ values
+#             for key, values in groupby(nums)  # key = value, values = iterator of consecutive same values
+#             if key == max_           # We care only about groups where value == max_
+#         )
