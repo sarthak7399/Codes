@@ -1,6 +1,8 @@
 {
-    "C_Cpp.errorSquiggles": "enabled",
-    "files.associations": {
-        "list": "cpp"
-    }
+  "C_Cpp.errorSquiggles": "enabled",
+  "files.associations": {
+    "list": "cpp"
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
 }
