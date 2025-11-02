@@ -59,3 +59,4 @@ class Solution:
         # Count unguarded cells
         unguarded_count = sum(row.count(0) for row in grid)
         return unguarded_count
+        
