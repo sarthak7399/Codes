@@ -24,3 +24,4 @@ class Solution:
                     operations += counted_ones
 
         return operations
+        
