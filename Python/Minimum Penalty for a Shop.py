@@ -14,6 +14,7 @@
 # Method 1: Greedy
 # Time: O(n)
 # Space: O(1)
+
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
         # Initial penalty: all 'Y' customers are unhappy if shop closes at time 0
@@ -39,35 +40,37 @@ class Solution:
 # # Method 2: Prefix and Suffix Counts
 # # Time: O(n)
 # # Space: O(n)
-# def bestClosingTime(s: str) -> int:
-#     n = len(s)
-    
-#     # prefixN[i]: number of 'N' in s[0 : i]
-#     prefixN = [0] * (n + 1)
-#     # suffixY[i]: number of 'Y' in s[i : n]
-#     suffixY = [0] * (n + 1)
 
-#     # Build prefix count of 'N'
-#     for i in range(1, n + 1):
-#         prefixN[i] = prefixN[i - 1]
-#         if s[i - 1] == 'N':
-#             prefixN[i] += 1
+# class Solution:
+#     def bestClosingTime(self, customers: str) -> int:
+#         n = len(customers)
+        
+#         # prefixN[i]: number of 'N' in customers[0 : i]
+#         prefixN = [0] * (n + 1)
+#         # suffixY[i]: number of 'Y' in customers[i : n]
+#         suffixY = [0] * (n + 1)
 
-#     # Build suffix count of 'Y'
-#     for i in range(n - 1, -1, -1):
-#         suffixY[i] = suffixY[i + 1]
-#         if s[i] == 'Y':
-#             suffixY[i] += 1
+#         # Build prefix count of 'N'
+#         for i in range(1, n + 1):
+#             prefixN[i] = prefixN[i - 1]
+#             if customers[i - 1] == 'N':
+#                 prefixN[i] += 1
 
-#     best = float('inf')
-#     ans = 0
+#         # Build suffix count of 'Y'
+#         for i in range(n - 1, -1, -1):
+#             suffixY[i] = suffixY[i + 1]
+#             if customers[i] == 'Y':
+#                 suffixY[i] += 1
 
-#     # Try closing at every time j
-#     for j in range(n + 1):
-#         # Penalty = unhappy 'N' before j + unhappy 'Y' after j
-#         pen = prefixN[j] + suffixY[j]
-#         if pen < best:
-#             best = pen
-#             ans = j
+#         best = float('inf')
+#         ans = 0
 
-#     return ans
+#         # Try closing at every time j
+#         for j in range(n + 1):
+#             # Penalty = unhappy 'N' before j + unhappy 'Y' after j
+#             pen = prefixN[j] + suffixY[j]
+#             if pen < best:
+#                 best = pen
+#                 ans = j
+
+#         return ans
