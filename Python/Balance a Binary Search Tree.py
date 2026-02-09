@@ -13,24 +13,35 @@ class TreeNode:
         self.right = right
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
-        if root is None : return None
+        # If tree is empty, nothing to balance
+        if root is None:
+            return None
 
-        nodes = []
+        nodes = []  # will store nodes in sorted (inorder) order
 
-        def inorder(node) :
-            if node is not None :
+        # Inorder traversal to collect BST nodes
+        def inorder(node):
+            if node is not None:
                 inorder(node.left)
                 nodes.append(node)
                 inorder(node.right)
 
         inorder(root)
 
-        def createBST(nodes, start, end) :
-            if start > end : return None
-            mid = start + (end-start)//2
+        # Build a balanced BST from sorted nodes
+        def createBST(nodes, start, end):
+            if start > end:
+                return None
+
+            # Choose middle element as root
+            mid = start + (end - start) // 2
             new_root = nodes[mid]
-            new_root.left = createBST(nodes, start, mid-1)
-            new_root.right = createBST(nodes, mid+1, end)
+
+            # Recursively build left and right subtrees
+            new_root.left = createBST(nodes, start, mid - 1)
+            new_root.right = createBST(nodes, mid + 1, end)
+
             return new_root
 
-        return createBST(nodes, 0, len(nodes)-1)  
+        # Reconstruct and return balanced BST
+        return createBST(nodes, 0, len(nodes) - 1)
