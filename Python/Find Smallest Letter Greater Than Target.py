@@ -5,6 +5,8 @@
 # Output: "x"
 # Explanation: There are no characters in letters that is lexicographically greater than 'z' so we return letters[0].
 
+from typing import List
+
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         # Default answer is the first letter (handles wrap-around case)
