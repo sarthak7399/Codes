@@ -9,6 +9,8 @@
 # For nums[2] that is equal to 1, If we move 1 step to right, we reach nums[3]. So result[2] should be 1.
 # For nums[3] that is equal to 1, If we move 1 step to right, we reach nums[0]. So result[3] should be 3.
 
+from typing import List
+
 class Solution:
     def constructTransformedArray(self, nums: List[int]) -> List[int]:
         # Create a copy of nums to store the result
