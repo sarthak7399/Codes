@@ -7,6 +7,9 @@
 # The longest balanced subarray is [2, 5, 4, 3].
 # It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [5, 3]. Thus, the answer is 4.
 
+from collections import deque
+from typing import List
+
 class segmentTreeNode:
     def __init__(self, maxV=0, minV=0, lazyTag=0):
         # mx → maximum value in this segment
@@ -15,7 +18,6 @@ class segmentTreeNode:
         self.mx = maxV
         self.mn = minV
         self.tag = lazyTag
-
 
 class segmentTree:
     def addTag(self, val: int, id: int) -> None:
