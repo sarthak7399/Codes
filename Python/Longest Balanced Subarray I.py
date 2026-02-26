@@ -7,6 +7,8 @@
 # The longest balanced subarray is [2, 5, 4, 3].
 # It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [5, 3]. Thus, the answer is 4.
 
+from typing import List
+
 class Solution:
     def longestBalanced(self, nums: List[int]) -> int:
         n = len(nums)
