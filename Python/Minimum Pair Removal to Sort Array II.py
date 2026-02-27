@@ -8,6 +8,11 @@
 # The pair (2,4) has the minimum sum of 6. After replacement, nums = [5,6].
 # The array nums became non-decreasing in two operations.
 
+from heapq import heapify, heappop, heappush
+from itertools import pairwise
+from math import inf
+from typing import List
+
 class Solution:
     def minimumPairRemoval(self, nums: List[int]) -> int:
         n = len(nums)
