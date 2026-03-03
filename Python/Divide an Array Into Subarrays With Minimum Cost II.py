@@ -7,6 +7,9 @@
 # The division [10], [1], [2,2,2], and [1] is not valid, because the difference between ik-1 and i1 is 5 - 1 = 4, which is greater than dist.
 # It can be shown that there is no possible way to divide nums into 4 subarrays at a cost lower than 15.
 
+from typing import List
+from sortedcontainers import SortedList
+
 class Solution:
     def minimumCost(self, nums: List[int], k: int, dist: int) -> int:
 
