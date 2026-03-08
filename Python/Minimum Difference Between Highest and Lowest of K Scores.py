@@ -11,6 +11,8 @@
 # - [9,4,1,7]. The difference between the highest and lowest score is 7 - 1 = 6.
 # The minimum possible difference is 2.
 
+from typing import List
+
 class Solution:
     def minimumDifference(self, nums: List[int], k: int) -> int:
         # Sort the array so close values come near each other
