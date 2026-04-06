@@ -10,6 +10,8 @@
 # nums[q...r] = nums[3...5] = [-3, 0, 2] is strictly increasing (-3 < 0 < 2).
 # Sum = (-2) + (-1) + (-3) + 0 + 2 = -4.
 
+from typing import List
+
 class Solution:
     def maxSumTrionic(self, nums: List[int]) -> int:
         n = len(nums)
