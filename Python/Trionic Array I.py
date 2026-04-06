@@ -9,6 +9,8 @@
 # nums[2...4] = [5, 4, 2] is strictly decreasing (5 > 4 > 2).
 # nums[4...5] = [2, 6] is strictly increasing (2 < 6).
 
+from typing import List
+
 class Solution:
     def isTrionic(self, nums: List[int]) -> bool:
         n = len(nums)
