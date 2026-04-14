@@ -12,6 +12,7 @@
 # The minimum cost to reach bottom-right cell is 7.
 
 from collections import defaultdict
+from typing import List
 
 class Solution:
     def minCost(self, grid: List[List[int]], k: int) -> int:
