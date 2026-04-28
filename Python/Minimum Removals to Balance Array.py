@@ -7,6 +7,8 @@
 # Remove nums[2] = 5 to get nums = [2, 1].
 # Now max = 2, min = 1 and max <= min * k as 2 <= 1 * 2. Thus, the answer is 1.
 
+from typing import List
+
 class Solution:
     def minRemoval(self, nums: List[int], k: int) -> int:
         # Sort the array to enable sliding window
