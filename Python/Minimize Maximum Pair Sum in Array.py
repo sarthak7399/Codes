@@ -6,6 +6,8 @@
 # Explanation: The elements can be paired up into pairs (3,3) and (5,2).
 # The maximum pair sum is max(3+3, 5+2) = max(6, 7) = 7.
 
+from typing import List
+
 class Solution:
     def minPairSum(self, nums: List[int]) -> int:
         # This will store the maximum pair sum we get
