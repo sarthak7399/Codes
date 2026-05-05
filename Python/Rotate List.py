@@ -55,3 +55,4 @@ class Solution:
 
         # Return new head
         return new
+    
