@@ -5,6 +5,8 @@
 # Output: [[1,2],[2,3],[3,4]]
 # Explanation: The minimum absolute difference is 1. List all pairs with difference equal to 1 in ascending order.
 
+from typing import List
+
 class Solution:
     def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
         # Sort the array so closest numbers come next to each other
