@@ -29,3 +29,4 @@ class Solution:
 
         # l (or r) points to the minimum element
         return nums[l]
+    
