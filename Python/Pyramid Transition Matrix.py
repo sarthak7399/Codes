@@ -7,6 +7,9 @@
 # Starting from the bottom (level 3), we can build "CE" on level 2 and then build "A" on level 1.
 # There are three triangular patterns in the pyramid, which are "BCC", "CDE", and "CEA". All are allowed.
 
+from collections import defaultdict
+from typing import List
+
 class Solution:
     def pyramidTransition(self, bottom: str, allowed: List[str]) -> bool:
         # Map each pair (u, v) to possible top characters
