@@ -10,6 +10,9 @@
 # The total cost incurred is 1 + 3 + 5 = 9.
 # It can be shown that this is the minimum possible cost.
 
+import math
+from typing import List
+
 class TrieNode(dict):
     __slots__ = ("sid",)
 
