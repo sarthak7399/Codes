@@ -98,3 +98,4 @@ class Solution:
 
         # No valid path found (should not happen per constraints)
         return -1
+    
