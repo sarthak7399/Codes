@@ -8,6 +8,9 @@
 # At node 1 reverse the original edge 3 → 1 into 1 → 3 and traverse it at cost 2 * 1 = 2.
 # Total cost is 3 + 2 = 5.
 
+import heapq
+from typing import List
+
 class Solution:
     def minCost(self, n: int, edges: List[List[int]]) -> int:
         # Build the graph
