@@ -8,10 +8,11 @@
 
 class Solution:
     def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
-        totalBottles = numBottles
+        totalBottles = numBottles  # total bottles drunk initially equals starting bottles
 
-        while numBottles >= numExchange:
-            totalBottles += numBottles // numExchange
-            numBottles = numBottles // numExchange + numBottles % numExchange
+        while numBottles >= numExchange:  # while enough empty bottles to exchange
+            totalBottles += numBottles // numExchange  # drink new bottles obtained
+            numBottles = numBottles // numExchange + numBottles % numExchange  
+            # new bottles + leftover empty bottles
 
-        return totalBottles
+        return totalBottles  # total bottles drunk

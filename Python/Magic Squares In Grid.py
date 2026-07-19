@@ -14,22 +14,29 @@
 # and sum of its left diagonal elements: 3 + 5 + 7 = 15.
 
 from typing import List
+
 class Solution:
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
+        # Magic square needs at least 3x3 grid
         if m < 3 or n < 3:
             return 0 
+        
         count = 0
         
+        # Iterate over all possible 3x3 subgrids
         for i in range(m - 2):
             for j in range(n - 2):
                 d = set()
+                # Collect all values in the 3x3 subgrid
                 for k in range(i, i + 3):
                     for l in range(j, j + 3):
                         d.add(grid[k][l])
                 
+                # Check if numbers are exactly 1 to 9
                 if d == set(range(1, 10)):
+                    # Check rows, columns, and diagonals sums
                     if (grid[i][j] + grid[i][j+1] + grid[i][j+2] == 
                         grid[i+1][j] + grid[i+1][j+1] + grid[i+1][j+2] ==
                         grid[i+2][j] + grid[i+2][j+1] + grid[i+2][j+2] ==

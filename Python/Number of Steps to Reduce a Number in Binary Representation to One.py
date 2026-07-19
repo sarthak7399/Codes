@@ -13,12 +13,32 @@
 
 class Solution:
     def numSteps(self, s: str) -> int:
-        num=int(s,2)
+        # Convert binary string to integer
+        # Example: "1101" -> 13
+        num = int(s, 2)
+
+        # (Debug print — not needed for final solution)
         print(num)
+
+        # Count number of operations required
         count = 0
-        while(True):
-            if(num==1): break
-            if(num%2==0): num//=2
-            else: num+=1
-            count+=1
+
+        # Repeat operations until number becomes 1
+        while True:
+            # Stop condition
+            if num == 1:
+                break
+
+            # If number is even → divide by 2
+            # (right shift in binary)
+            if num % 2 == 0:
+                num //= 2
+            else:
+                # If number is odd → add 1
+                # This creates carry in binary
+                num += 1
+
+            # One operation completed
+            count += 1
+
         return count

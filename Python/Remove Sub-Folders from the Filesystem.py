@@ -24,4 +24,5 @@ class Solution:
             if not folder[i].startswith(last_folder):
                 ans.append(folder[i])
         
+        # Return the result
         return ans

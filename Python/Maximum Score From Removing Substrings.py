@@ -12,7 +12,10 @@
 
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
-        res = 0
+        res = 0  # Initialize total score result
+
+        # Decide which substring removal gives higher score
+        # Always remove higher scoring substring first
         if y > x:
             top = "ba"
             top_score = y
@@ -24,22 +27,24 @@ class Solution:
             bot = "ba"
             bot_score = y
 
-        # removing first top substrings cause they give more points
+        # Step 1: Remove all top substrings greedily using a stack
         stack: list[str] = []
         for char in s:
+            # If top substring is formed at stack top, remove it and add score
             if char == top[1] and stack and stack[-1] == top[0]:
                 res += top_score
-                stack.pop()  # delete first char of this substring
+                stack.pop()  # Remove first character of the top substring
             else:
-                stack.append(char)
+                stack.append(char)  # Otherwise keep character
 
-        # removing bot substrings cause they give less or equal amount of scores
+        # Step 2: Remove remaining bot substrings from the stack
         new_stack: list[str] = []
         for char in stack:
+            # If bot substring is formed, remove it and add score
             if char == bot[1] and new_stack and new_stack[-1] == bot[0]:
                 res += bot_score
-                new_stack.pop()
+                new_stack.pop()  # Remove first character of the bot substring
             else:
                 new_stack.append(char)
 
-        return res
+        return res  # Return total score after removing substrings

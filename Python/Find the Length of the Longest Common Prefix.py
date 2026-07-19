@@ -10,33 +10,47 @@
 # The longest common prefix is 100 with a length of 3.
 
 from typing import List
+
 class Solution:
     def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
-        X, Y = len(arr1), len(arr2)
+        X, Y = len(arr1), len(arr2)  # lengths (not directly used later)
 
-        s = set()
+        s = set()  # stores all prefixes of numbers in arr2
+
+        # Generate all numeric prefixes for arr2 elements
         for i in arr2:
             copy = i
-            # 12345 -> 1, 12, 123, 1234, 12345
+
+            # Example: 12345 → 12345, 1234, 123, 12, 1
             s.add(copy)
+
+            # Keep removing last digit to form prefixes
             copy = copy // 10
             while copy > 0:
                 s.add(copy)
                 copy = copy // 10
-        
-        t = set()
+
+        t = set()  # stores all prefixes of numbers in arr1
+
+        # Generate all numeric prefixes for arr1 elements
         for i in arr1:
             copy = i
-            # 12345 -> 1, 12, 123, 1234, 12345
+
+            # Example: 12345 → 12345, 1234, 123, 12, 1
             t.add(copy)
+
+            # Keep removing last digit to form prefixes
             copy = copy // 10
             while copy > 0:
                 t.add(copy)
                 copy = copy // 10
-                
-        ans = 0
+
+        ans = 0  # stores maximum common prefix length
+
+        # Compare prefixes of arr1 and arr2
         for i in t:
             if i in s:
+                # length of number gives prefix length
                 ans = max(ans, len(str(i)))
-                
+
         return ans

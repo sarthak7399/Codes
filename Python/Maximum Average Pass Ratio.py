@@ -7,6 +7,7 @@
 
 import heapq
 from typing import List
+
 class Solution:
     def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
         # Calculate the benefit of adding a student to each class and build a heap
@@ -32,4 +33,3 @@ class Solution:
         # Calculate the final average pass ratio
         total_average = sum(num_pass / num_total for _, num_pass, num_total in class_heap) / len(classes)
         return total_average
-
