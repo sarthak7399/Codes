@@ -5,46 +5,46 @@
 # Output: 10
 # Explanation:  If Alice takes one pile at the beginning, Bob takes two piles, then Alice takes 2 piles again. Alice can get 2 + 4 + 4 = 10 piles in total. If Alice takes two piles at the beginning, then Bob can take all three piles left. In this case, Alice get 2 + 7 = 9 piles in total. So we return 10 since it's larger. 
 
-from typing import List
 class Solution:
     def stoneGameII(self, piles: List[int]) -> int:
-        # Initialize the memoization table
-        memo = [[0] * len(piles) for _ in range(len(piles))]
-        # Initialize the suffixSum array
-        suffix_sum = piles[:]
+        # Number of piles
+        n = len(piles)
 
-        # Compute the suffix sums
-        for i in range(len(suffix_sum) - 2, -1, -1):
-            suffix_sum[i] += suffix_sum[i + 1]
+        # dp[i][m] = maximum stones the current player can collect
+        # starting from index i when the current M value is m.
+        dp = [[0] * (n + 1) for _ in range(n)]
 
-        # Call the recursive function to find the maximum stones Alex can collect
-        return self.max_stones(suffix_sum, 1, 0, memo)
+        # suffix_sum[i] = total number of stones from index i to the end.
+        # This allows us to calculate the total remaining stones in O(1).
+        suffix_sum = [0] * n
+        suffix_sum[-1] = piles[-1]
 
-    def max_stones(
-        self,
-        suffix_sum: List[int],
-        max_till_now: int,
-        curr_index: int,
-        memo: List[List[int]],
-    ) -> int:
-        # If the current index plus twice the maxTillNow exceeds the array size, take all remaining stones
-        if curr_index + 2 * max_till_now >= len(suffix_sum):
-            return suffix_sum[curr_index]
+        for i in range(n - 2, -1, -1):
+            suffix_sum[i] = suffix_sum[i + 1] + piles[i]
 
-        # Return the memoized result if it exists
-        if memo[curr_index][max_till_now] > 0:
-            return memo[curr_index][max_till_now]
+        # Process states from the end of the array towards the beginning.
+        for i in range(n - 1, -1, -1):
+            for m in range(1, n + 1):
 
-        # Initialize the result to a very large number (infinity)
-        res = float("inf")
+                # If the player can take all remaining piles,
+                # they simply collect all remaining stones.
+                if i + 2 * m >= n:
+                    dp[i][m] = suffix_sum[i]
 
-        # Iterate through possible moves and calculate the minimum result for the opponent
-        for i in range(1, 2 * max_till_now + 1):
-            res = min(
-                res,
-                self.max_stones(suffix_sum, max(i, max_till_now), curr_index + i, memo),
-            )
+                else:
+                    # Try taking x piles, where 1 <= x <= 2 * m.
+                    for x in range(1, 2 * m + 1):
 
-        # Memoize the result as the current suffix sum minus the opponent's best outcome
-        memo[curr_index][max_till_now] = suffix_sum[curr_index] - res
-        return memo[curr_index][max_till_now]
+                        # Current player gets all remaining stones
+                        # minus the maximum stones the opponent can
+                        # collect from the next state.
+                        #
+                        # The new M value becomes max(m, x).
+                        dp[i][m] = max(
+                            dp[i][m],
+                            suffix_sum[i] -
+                            dp[i + x][max(m, x)]
+                        )
+
+        # Initially, the game starts at index 0 with M = 1.
+        return dp[0][1]
