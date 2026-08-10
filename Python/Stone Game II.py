@@ -5,6 +5,8 @@
 # Output: 10
 # Explanation:  If Alice takes one pile at the beginning, Bob takes two piles, then Alice takes 2 piles again. Alice can get 2 + 4 + 4 = 10 piles in total. If Alice takes two piles at the beginning, then Bob can take all three piles left. In this case, Alice get 2 + 7 = 9 piles in total. So we return 10 since it's larger. 
 
+from typing import List
+
 class Solution:
     def stoneGameII(self, piles: List[int]) -> int:
         # Number of piles
