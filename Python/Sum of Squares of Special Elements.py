@@ -25,3 +25,4 @@ class Solution:
 
         # Return the sum of squares of elements at divisor indices.
         return ans
+    
