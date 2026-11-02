@@ -14,12 +14,31 @@
 
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        l=[0]*(32)
+
+        # Store the frequency of each lowercase English letter
+        # Extra slots are added so the array can be divided
+        # into four groups of eight characters.
+        l = [0] * 32
+
+        # Count the occurrence of every character from 'a' to 'z'
         for i in range(26):
-            l[i]=word.count(chr(97+i))
+            l[i] = word.count(chr(97 + i))
+
+        # Place the most frequent characters first so that
+        # they receive the minimum number of button pushes.
         l.sort(reverse=True)
-        res=0
+
+        res = 0
+
+        # Assign characters to groups of 8:
+        # First 8 characters  -> 1 push each
+        # Next 8 characters   -> 2 pushes each
+        # Next 8 characters   -> 3 pushes each
+        # Last 8 characters   -> 4 pushes each
         for i in range(4):
             for j in range(8):
-                res+=(i+1)*l[8*i+j]
+
+                # Add frequency × number of pushes required
+                res += (i + 1) * l[8 * i + j]
+
         return res

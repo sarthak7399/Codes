@@ -6,7 +6,6 @@
 # Explanation: Interval [3,6] is covered by [2,8], therefore it is removed.
 
 from typing import List
-
 class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]):
 

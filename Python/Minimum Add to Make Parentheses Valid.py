@@ -6,12 +6,23 @@
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
+        # Count unmatched opening and closing parentheses.
         open_c = close_c = 0
+
+        # Traverse each character in the string.
         for c in s:
-            if c == '(':    # Opening Parenthesis
+            if c == '(':
+                # An opening parenthesis needs a matching closing one.
                 open_c += 1
-            elif c == ')' and open_c > 0:   # Closing Parenthesis and open Parenthesis exists
+
+            elif c == ')' and open_c > 0:
+                # Match the closing parenthesis with an unmatched opening one.
                 open_c -= 1
-            else:       # Closing Parenthesis and no open Parenthesis
-                close_c += 1    
-        return open_c + close_c     # Add the number of opening and closing Parenthesis
+
+            else:
+                # No unmatched opening parenthesis exists,
+                # so this closing parenthesis needs a matching opening one.
+                close_c += 1
+
+        # Add the unmatched opening and closing parentheses.
+        return open_c + close_c
