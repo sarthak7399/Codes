@@ -65,3 +65,4 @@ class Solution:
 
         # Return answers in the original order of queries.
         return res
+    
