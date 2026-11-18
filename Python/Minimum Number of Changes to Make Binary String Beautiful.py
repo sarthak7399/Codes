@@ -11,8 +11,17 @@ class Solution:
     def minChanges(self, s: str) -> int:
         count = 0
         i = 0
+
+        # Iterate through the string in pairs of characters
         while i < len(s) - 1:
+
+            # If both characters in the pair are different,
+            # one change is required to make them equal
             if s[i] != s[i + 1]:
                 count += 1
+
+            # Move to the next pair
             i += 2
+
+        # Return the total number of changes required
         return count
